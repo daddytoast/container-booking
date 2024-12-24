@@ -1,0 +1,42 @@
+/* Containers */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.content-works{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
+.content-work {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* End Containers */
+
+/* Content Works */
+.content h1 {
+    font-size: 2rem;
+    color: var(--logo-color);
+}
+
+.content-work img{
+    display: block;
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 0.5em;
+}
+
+.content-work p{
+    text-align: center;
+    color: var(--text-color);
+}
+/* End Content Works */

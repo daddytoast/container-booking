@@ -1,0 +1,37 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+    font-family: Montserrat, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: var(--background-color);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    align-items: center;
+    justify-content: center;
+}
+.page {
+    display: grid;
+    grid-gap: 2em;
+    margin: 1em 2em 0;
+    position: relative;
+}

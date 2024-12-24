@@ -1,0 +1,15 @@
+@import url('common.css');
+@import url('colors.css');
+
+@import url('header.css');
+
+body {
+    background-color: white; /* Переопределение background-color */
+}
+
+.full-image {
+    width: 100%;
+    height: 90%; /* Высота в 100% от экрана */
+    object-fit: cover;
+    display: block;
+}

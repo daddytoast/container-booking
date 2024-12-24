@@ -1,0 +1,36 @@
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.commentary {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 90%;
+    color: var(--text-color);
+    border-radius: 0.5em;
+}
+.commentary p{
+    font-style: italic;
+    text-align: center;
+}
+
+.commentary p span{
+    font-weight: bold;
+    color: var(--logo-color);
+}
+.studio-name {
+    color: var(--logo-color);
+}
+.love{
+    color: palevioletred;
+}
+.commentary::before,
+.commentary::after {
+    content: '';
+    margin: 2em 0;
+    height: 0.1em;
+    background-color: var(--text-color);
+}

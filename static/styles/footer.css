@@ -1,0 +1,26 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.footer-logo{
+    display: flex;
+    width: 100%;
+    color: var(--logo-color);
+    justify-content: center;
+}
+.footer-logo img{
+    display: block;
+    width: 3em;
+}
+.footer-contact {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--text-color)
+}
+.footer-contact p{
+    margin: 0 1em;
+}

@@ -1,0 +1,94 @@
+/* Header logo */
+
+.header {
+    position: sticky;
+    top: 0;
+    grid-gap: 0;
+    justify-content: space-between;
+    background-color: var(--footer-color);
+    border-radius: 2em;
+    padding: 0 2em;
+    z-index: 1000;
+}
+
+.header-logo{
+    display: flex;
+    flex-basis: 5%;
+    justify-content: center;
+    align-items: center;
+}
+.header-logo img{
+    display: block;
+    width: 4em;
+}
+.header-logo img:hover{
+    background-color: #a0c1db;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+/* End Header logo */
+
+/* Navigation list */
+.header-nav {
+    flex-basis: 65%;
+}
+
+.header-nav ul{
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: left;
+    text-transform: uppercase;
+    list-style: none;
+
+}
+.header-nav ul li {
+    margin-right: 1rem;
+}
+.header-nav ul li a{
+    color: #356477;
+    text-decoration: none;
+}
+.header-nav ul li a:hover{
+    color: white;
+    text-decoration: underline;
+}
+/* End Navigation list */
+
+/* Buttons on header */
+.header-auth{
+    display: flex;
+    flex-basis: 20%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;;
+}
+.header-auth button {
+    margin: 0 0.2em;
+}
+.button-logo {
+    font-size: 1rem;
+    padding: 0.75em 1.5em;
+    color: var(--secondary-color);
+    background-color: #7ca6d1;
+    border: none;
+    white-space: nowrap;
+    border-radius: 0.5em;
+}
+.button-logo:hover {
+    background-color: var(--logo-active-color);
+    cursor: pointer;
+}
+.button-register {
+    font-size: 1rem;
+    padding: 0.75em 1.5em;
+    color: white;
+    background-color: #6294c5;
+    border: none;
+    white-space: nowrap;
+    border-radius: 0.5em;
+}
+.button-register:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+/* End Buttons on header */

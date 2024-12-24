@@ -1,0 +1,34 @@
+/* Images */
+.preview-img{
+    position: relative;
+}
+
+.preview-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    object-fit: cover;
+    border-radius: 1em;
+    filter: brightness(65%); /* затемняет изображение */
+}
+/* End Images */
+
+/* Text */
+.preview-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 25%;
+    margin: 0 1rem;
+    border-radius: 0.5em;
+    color: white;
+}
+
+.preview-text h1{
+    color: rgb(183, 225, 255);
+}
+
+/* End Text */
