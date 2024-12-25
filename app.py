@@ -53,13 +53,20 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
+
+
+
+
+
 # Маршруты
+@app.route('/index.html')
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register-modal-window', methods=['GET', 'POST'])
 def register():
+    redirect('register-modal-window.html')
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -91,14 +98,36 @@ def logout():
 
 
 @app.route('/book', methods=['POST'])
-@login_required
 def book():
+    redirect(url_for('application_form'))
     data = request.get_json()
-    new_booking = Booking(name=data['name'], email=current_user.email,
-                          container_type=data['container_type'], size=data['size'])
+    new_booking = Booking(
+        name=data['name'],
+        email=data['email'],
+        container_type=data['container_type'],
+        size=data['size']
+    )
     db.session.add(new_booking)
     db.session.commit()
-    return jsonify({'message': 'Booking created!'})
+    return jsonify({"message": "Booking successful!"}), 201
+
+@app.route('/bookings', methods=['GET'])
+def get_bookings():
+    bookings = Booking.query.all()
+    output = []
+    for booking in bookings:
+        booking_data = {
+            'id': booking.id,
+            'name': booking.name,
+            'email': booking.email,
+            'container_type': booking.container_type,
+            'size': booking.size
+        }
+        output.append(booking_data)
+    return jsonify(output)
+
+
+
 
 if __name__ == '__main__':
     with app.app_context():
