@@ -3,64 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/collection-page.css">
+    <link rel="stylesheet" href="static/styles/collection-page.css">
     <title>Standard Containers Collection</title>
 </head>
 <body>
 <div class="page">
     <header class="header container">
         <div class="header-logo">
-            <a href="home-page.html">
-                <img src="/images/butterfly-logo.svg" alt="BrokerPro">
+            <a href="https://brokerpro.ru/">
+                <img src="static/images/BrokerPro.png" alt="BrokerPro">
             </a>
         </div>
 
         <nav class="header-nav">
             <ul>
-                <li><a href="collection.html">Standard</a></li>
-                <li><a href="collection.html">Reefer</a></li>
-                <li><a href="collection.html">High-Cube</a></li>
+                <li><a href="index.html">На главную</a></li>
+                <li><a href="books">Бронирование контейнеров</a></li>
+                <li><a href="collection">Типы контейнеров</a></li>
             </ul>
         </nav>
 
         <div class="header-auth">
-            <button class="button-register">Sign Up</button>
-            <button class="button-logo">Sign In</button>
+            <a href="login-modal-window.html">
+                <a href="{{ url_for('login') }}" class="button-register">Войти</a>
+            </a>
+               <a href="{{ url_for('register') }}" class="button-register">Зарегистрироваться</a>
         </div>
-    </header> <!-- End Header -->
+    </header>
 
     <main class="collection container">
-        <h1>Standard Containers Collection</h1>
+        <h1>Типы контейнеров</h1>
         <div class="collection-works">
             <!-- Обернут весь блок в ссылку -->
             <a href="container-detail.html" class="collection-work">
                 <h2>Compact Cargo 20ft</h2>
-                <img src="/images/art.jpg" alt="Compact Cargo 20ft">
+                <img src="static/images/art.jpg" alt="Compact Cargo 20ft">
                 <p>Идеальный выбор для перевозки товаров небольшого объема. Эти контейнеры легко загружаются, обладают высокой прочностью и подходят для большинства транспортных маршрутов.</p>
             </a>
             <a href="container-detail.html" class="collection-work">
                 <h2>Universal Hauler 40ft</h2>
-                <img src="/images/e-art.jpg" alt="Universal Hauler 40ft">
+                <img src="static/images/e-art.jpg" alt="Universal Hauler 40ft">
                 <p>Этот универсальный 40-футовый контейнер идеально подходит для транспортировки больших партий товаров. Его вместимость делает его надежным партнером в логистике.</p>
             </a>
             <a href="container-detail.html" class="collection-work">
                 <h2>Secure Box 20ft</h2>
-                <img src="/images/sculpture.jpg" alt="Secure Box 20ft">
+                <img src="static/images/sculpture.jpg" alt="Secure Box 20ft">
                 <p>Специально разработан для защиты груза от внешних воздействий. Отличается усиленной конструкцией и идеален для транспортировки ценных товаров.</p>
             </a>
             <a href="container-detail.html" class="collection-work">
                 <h2>Heavy Duty Carrier 40ft</h2>
-                <img src="/images/art.jpg" alt="Heavy Duty Carrier 40ft">
+                <img src="static/images/art.jpg" alt="Heavy Duty Carrier 40ft">
                 <p>Этот контейнер разработан для перевозки тяжеловесных грузов. Его усиленная конструкция и антикоррозийное покрытие обеспечивают безопасность даже в сложных условиях.</p>
             </a>
             <a href="container-detail.html" class="collection-work">
                 <h2>EcoBox 20ft</h2>
-                <img src="/images/sculpture.jpg" alt="EcoBox 20ft">
+                <img src="static/images/sculpture.jpg" alt="EcoBox 20ft">
                 <p>Экологически чистое решение для транспортировки. Контейнеры этой серии изготовлены из переработанных материалов и идеально подходят для перевозки продуктов питания.</p>
             </a>
             <a href="container-detail.html" class="collection-work">
                 <h2>WideLoad 40ft</h2>
-                <img src="/images/art.jpg" alt="WideLoad 40ft">
+                <img src="static/images/art.jpg" alt="WideLoad 40ft">
                 <p>Широкие 40-футовые контейнеры предоставляют дополнительное пространство для габаритных грузов, таких как строительные материалы и оборудование.</p>
             </a>
         </div>
