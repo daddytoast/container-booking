@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="static/styles/modal-window.css">
+        <title>Войти</title>
+    </head>
+    <body>
+        <div class="modal">
+            <div class="modal-window">
+                <form class="form" id="registration-form" action="#" method="POST">
+                    <div class="form-header">
+                        <h1>Зарегистрироваться</h1>
+                       <button type="button" class="button-close" id="close-button">X</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Электронная почта</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Введите пароль ещё раз</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                    <div>
+                        <button class="button-logo" type="submit"><strong>Войти</strong></button>
+                    </div>
+                </form>
+            </div>
+            <!--<div class="overlay"></div>-->
+        </div>
+
+
+
+    </body>
+
+<script type="module">
+      document.getElementById('close-button').addEventListener('click', function () {
+            window.history.back(); // Перенаправление на главную страницу
+        });
+    document.getElementById('registration-form').addEventListener('submit', async function (event) {
+        // Предотвращаем стандартное действие формы
+        event.preventDefault();
+
+        // Собираем данные из формы
+        const data = {
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            confirmPassword: document.getElementById('confirm-password').value,
+        };
+
+        try {
+            // Отправляем POST-запрос на сервер
+            const response = await fetch('register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                console.log('Успешная регистрация:', await response.json());
+                // Редирект на главную страницу
+                window.location.href = '/';
+            } else {
+                console.error('Ошибка сервера:', response.status, response.statusText);
+            }
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
+    });
+</script>
+</html>
