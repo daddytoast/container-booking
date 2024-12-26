@@ -1,0 +1,187 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Шапка */
+/* Header logo */
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+    font-family: Montserrat, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: var(--background-color);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    align-items: center;
+    justify-content: center;
+}
+.page {
+    display: grid;
+    grid-gap: 2em;
+    margin: 1em 2em 0;
+    position: relative;
+}
+.header {
+    position: sticky;
+    top: 0;
+    grid-gap: 0;
+    justify-content: space-between;
+    background-color: var(--footer-color);
+    border-radius: 2em;
+    padding: 0 2em;
+    z-index: 1000;
+}
+
+.header-logo{
+    display: flex;
+    flex-basis: 5%;
+    justify-content: center;
+    align-items: center;
+}
+.header-logo img{
+    display: block;
+    width: 4em;
+}
+.header-logo img:hover{
+    background-color: #a0c1db;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+/* End Header logo */
+
+/* Navigation list */
+.header-nav {
+    flex-basis: 65%;
+}
+
+.header-nav ul{
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: left;
+    text-transform: uppercase;
+    list-style: none;
+
+}
+.header-nav ul li {
+    margin-right: 1rem;
+}
+.header-nav ul li a{
+    color: #356477;
+    text-decoration: none;
+}
+.header-nav ul li a:hover{
+    color: white;
+    text-decoration: underline;
+}
+/* End Navigation list */
+
+/* Buttons on header */
+.header-auth{
+    display: flex;
+    flex-basis: 20%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;;
+}
+.header-auth button {
+    margin: 0 0.2em;
+}
+.button-logo {
+    font-size: 1rem;
+    padding: 0.75em 1.5em;
+    color: var(--secondary-color);
+    background-color: #7ca6d1;
+    border: none;
+    white-space: nowrap;
+    border-radius: 0.5em;
+}
+.button-logo:hover {
+    background-color: var(--logo-active-color);
+    cursor: pointer;
+}
+.button-register {
+    font-size: 1rem;
+    padding: 0.75em 1.5em;
+    color: white;
+    background-color: #6294c5;
+    border: none;
+    white-space: nowrap;
+    border-radius: 0.5em;
+    margin-left: 5px;
+    text-decoration: none;
+}
+.button-register:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+/* End Buttons on header */
+/* Заголовок */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Форма бронирования */
+form#booking-form {
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form#booking-form label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+form#booking-form input[type="text"],
+form#booking-form input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form#booking-form button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+form#booking-form button:hover {
+    background-color: #218838;
+}
