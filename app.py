@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'qwerty312'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bookings.db'
@@ -32,14 +33,16 @@ class Booking(db.Model):
     email = db.Column(db.String(50), nullable=False)
     container_type = db.Column(db.String(50), nullable=False)
     size = db.Column(db.String(50), nullable=False)
-    is_available = db.Column(db.Boolean, default=True)
+
 
 # Формы
 class RegistrationForm(FlaskForm):
-
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    email = StringField('Email', [
+        DataRequired(message="Email is required"),
+        Email(message="Invalid email address")
+    ])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=3)])
+    confirmPassword = PasswordField('confirmPassword', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
 
@@ -54,28 +57,28 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
-
-
-
-
 # Маршруты
 @app.route('/index.html')
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/register-modal-window', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST', 'GET'])
 def register():
-    redirect('register-modal-window.html')
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+
         new_user = User(email=form.email.data, password=hashed_password)
+
         db.session.add(new_user)
+
         db.session.commit()
+
         flash('Account created! You can now login.', 'success')
-        return redirect(url_for('login'))
-    return render_template('register-modal-window.html', form=form)
+
+        return redirect(url_for('index'))
+    return render_template('registration.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -88,7 +91,7 @@ def login():
             return redirect(url_for('index'))
         else:
             flash('Login unsuccessful. Please check your email and password', 'danger')
-    return render_template('login-modal-window.html', form=form)
+    return render_template('login.html', form=form)
 
 @app.route('/logout')
 def logout():
@@ -96,10 +99,13 @@ def logout():
     return redirect(url_for('index.html'))
 
 
+@app.route('/books')
+def books():
+    return render_template('application_form.html')
 
 @app.route('/book', methods=['POST'])
 def book():
-    redirect(url_for('application_form'))
+
     data = request.get_json()
     new_booking = Booking(
         name=data['name'],
@@ -109,6 +115,7 @@ def book():
     )
     db.session.add(new_booking)
     db.session.commit()
+
     return jsonify({"message": "Booking successful!"}), 201
 
 @app.route('/bookings', methods=['GET'])
@@ -126,7 +133,9 @@ def get_bookings():
         output.append(booking_data)
     return jsonify(output)
 
-
+@app.route('/collection')
+def collection():
+    return render_template('collection.html')
 
 
 if __name__ == '__main__':
