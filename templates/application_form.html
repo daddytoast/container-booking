@@ -1,18 +1,85 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles/form.css">
+    <title>Бронирование контейнеров</title>
+</head>
+<body>
+<header class="header container">
+        <div class="header-logo">
+            <a href="https://brokerpro.ru/">
+                <img src="static/images/BrokerPro.png" alt="BrokerPro">
+            </a>
+        </div>
 
-{% block title %}Application Form{% endblock %}
+        <nav class="header-nav">
+            <ul>
+                <li><a href="index.html">На главную</a></li>
+                <li><a href="books">Бронирование контейнеров</a></li>
+                <li><a href="collection">Типы контейнеров</a></li>
+            </ul>
+        </nav>
 
-{% block content %}
-<h1>Application Form</h1>
-<form method="POST">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="header-auth">
+            <a href="login-modal-window.html">
+                </a><a href="/login" class="button-register">Войти</a>
+
+               <a href="/register" class="button-register">Зарегистрироваться</a>
+        </div>
+    </header>
+<h1>Бронирование контейнера</h1>
+<form id="booking-form">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <br>
+    <label for="container_type">Тип контейнера:</label>
+    <input type="text" id="container_type" required>
+    <br>
+    <label for="size">Размер:</label>
+    <input type="text" id="size" required>
+    <br>
+    <button type="submit">Забронировать</button>
 </form>
-{% endblock %}
+
+<script type="module">
+    document.getElementById('booking-form').addEventListener('submit', async function (event) {
+        // Предотвращаем стандартное действие формы
+        event.preventDefault();
+
+        // Собираем данные из формы
+        const data = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            container_type: document.getElementById('container_type').value,
+            size: document.getElementById('size').value,
+        };
+
+        try {
+            // Отправляем POST-запрос на сервер
+            const response = await fetch('book', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                console.log('Успешное бронирование:', await response.json());
+                // Редирект на главную страницу
+                window.location.href = '/';
+            } else {
+                console.error('Ошибка сервера:', response.status, response.statusText);
+            }
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
+    });
+</script>
+</body>
+</html>
